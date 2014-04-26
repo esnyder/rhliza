@@ -1,6 +1,9 @@
 # crtb
 
-A Clojure library designed to ... well, that part is up to you.
+Playing with a clojure version of the rhliza bot to chat via twitter an
+display on the RHL translux.
+
+env.sh.gpg encrypted with rhl N* one
 
 ## Usage
 

@@ -10,13 +10,23 @@ ats=os.getenv('RHLIZA_ACCESS_TOKEN_SECRET')
 ck =os.getenv('RHLIZA_CONSUMER_KEY')
 cs =os.getenv('RHLIZA_CONSUMER_SECRET')
 
-print at, ats, ck, cs
+print at
+print ats
+print ck
+print cs
 auth = tweepy.OAuthHandler(ck, cs)
-redirect_url = auth.get_authorization_url()
-print "Must verify access at: ", redirect_url
+#redirect_url = auth.get_authorization_url()
+#print "Must verify access at: ", redirect_url
 
-#auth.set_access_token(at, ats)
+auth.set_access_token(at, ats)
 
-#api = tweepy.API(auth)
+api = tweepy.API(auth)
 
-#print api.me().name
+print api.me().name
+
+replies = api.mentions_timeline()
+
+for reply in reversed(replies):
+    print reply.text
+
+
