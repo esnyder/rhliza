@@ -6,13 +6,16 @@
 (defn test []
   (with-open [client (ac/create-client)] ; Create client
     (let [response (ac/GET client "http://stream.twitter.com/1/statuses/sample.json")] ; request http resource
-      (println response)
+      ;;(println response)
       (ac/await response)
-      (println response)
-      (println "done: " @(:done response))
-      (println "error: " @(:error response))
-      (println @(:status response))
-      (println (ac/string response)) ; read body of response as string
+      ;;(println response)
+      (if (ac/failed? response)
+        (do
+          (println "response failed with:" (ac/error response))
+          (println "status was:" (ac/status response)))
+        (do
+          (println "status was: " (ac/status response))
+          (println "response was: " (ac/string response))))
       )))
 
 (def u "rhliza")

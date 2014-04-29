@@ -31,10 +31,10 @@
 
   ;; simply retrieves the user, authenticating with the above credentials
   ;; note that anything in the :params map gets the -'s converted to _'s
-  (println (restful/users-show :oauth-creds bad-creds :params {:screen-name "rhliza"}))
+  (println (restful/users-show :oauth-creds my-creds :params {:screen-name "rhliza"}))
   
   ;; supplying a custom header
-  ;; (users-show :oauth-creds my-creds :params {:screen-name "AdamJWynne"} :headers {:x-blah-blah "value"})
+  ;; (restful/users-show :oauth-creds my-creds :params {:screen-name "AdamJWynne"} :headers {:x-blah-blah "value"})
                                         ; shows the users friends
   
   (println (restful/friendships-show :oauth-creds my-creds 
